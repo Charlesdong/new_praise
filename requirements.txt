@@ -1,0 +1,9 @@
+django==1.5
+mysql_python
+django-crispy-forms
+django-xadmin
+requests
+apscheduler
+tablib
+xlwt
+xlrd
