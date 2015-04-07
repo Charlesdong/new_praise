@@ -1,6 +1,0 @@
-create database new_praise CHARACTER SET utf8 COLLATE utf8_bin;
-
-sudo apt-get install libmysqlclient-dev
-
-安装xadmin
-http://lovelace.blog.51cto.com/1028430/1585864
