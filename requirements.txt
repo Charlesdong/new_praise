@@ -6,4 +6,5 @@ requests
 apscheduler
 tablib
 xlwt
+xlsxwriter 
 xlrd
