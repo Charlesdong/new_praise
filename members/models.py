@@ -21,6 +21,8 @@ class ChoirMembers(models.Model):
 
     class Meta:
         db_table = u'choir_members'
+        verbose_name = u'诗班成员'
+        verbose_name_plural = u'诗班成员'
 
     def __unicode__(self):
         return self.name

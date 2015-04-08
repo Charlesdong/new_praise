@@ -103,6 +103,8 @@ MIDDLEWARE_CLASSES = (
 )
 
 ROOT_URLCONF = 'new_praise.urls'
+DATETIME_FORMAT = 'Y-m-d H:i:s'
+DATE_FORMAT = 'Y-m-d'
 
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'new_praise.wsgi.application'

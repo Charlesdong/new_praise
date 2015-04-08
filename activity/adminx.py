@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from xadmin import site
+from activity.forms import CompereWeeklyAdminForm
 from activity.models import Priest, Songs, CompereWeekly
 
 
@@ -13,6 +14,9 @@ class SongsAdmin(object):
 
 class CompereWeeklyAdmin(object):
     list_display = ('compers', 'compe_songs', 'compe_date', 'speaker', 'verse', )
+    search_fields = ['compers__name', 'compe_songs__name']
+    list_filter = ('compe_date', )
+    form = CompereWeeklyAdminForm
 
 
 site.register(Priest, PriestAdmin)
