@@ -6,6 +6,7 @@ from members.models import ChoirMembers
 class ChoirMembersAdmin(object):
     list_display = ('name', 'gender', 'native_place', 'join_time', 'baptize_time', 'telephone', 'qq',  'extra')
     search_fields = ['name', 'telephone']
+    list_filter = ('join_time', )
 
     def join_time(self, obj):
         if obj.join_time:

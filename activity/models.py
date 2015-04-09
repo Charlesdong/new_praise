@@ -21,8 +21,8 @@ class Priest(models.Model):
 class Songs(models.Model):
     name = models.CharField(u'歌曲名字', max_length=100)
     author = models.CharField(u'歌曲作者', max_length=300, blank=True, null=True)
-    mp3 = models.FileField(u'mp3', upload_to='/home/upload/mp3/', max_length=500, blank=True, null=True)
-    musicbook = models.FileField(u'歌谱', upload_to='/home/upload/musicbook/', max_length=500, blank=True, null=True)
+    mp3 = models.FileField(u'mp3', upload_to='upload/mp3/', max_length=500, blank=True, null=True)
+    musicbook = models.FileField(u'歌谱', upload_to='upload/musicbook/', max_length=500, blank=True, null=True)
 
     class Meta:
         db_table = u'songs'

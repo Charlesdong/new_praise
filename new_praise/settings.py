@@ -1,7 +1,9 @@
 # Django settings for new_praise project.
+import os
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
+PROJECT_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
@@ -29,11 +31,12 @@ ALLOWED_HOSTS = []
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # although not all choices may be available on all operating systems.
 # In a Windows environment this must be set to your system time zone.
-TIME_ZONE = 'America/Chicago'
+TIME_ZONE = 'Asia/Shanghai'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'zh-CN'
+
 
 SITE_ID = 1
 
@@ -98,13 +101,16 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    # 'django.middleware.locale.LocaleMiddleware'
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
 ROOT_URLCONF = 'new_praise.urls'
-DATETIME_FORMAT = 'Y-m-d H:i:s'
 DATE_FORMAT = 'Y-m-d'
+DATETIME_FORMAT = 'Y-m-d H:i'
+TIME_FORMAT = 'H:i'
+MEDIA_ROOT = os.path.join(PROJECT_PATH, "media").replace('\\', '/')
 
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'new_praise.wsgi.application'
@@ -125,6 +131,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'xadmin',
     'crispy_forms',
+    'reversion',
     'activity',
     'finance',
     'members',
