@@ -3,14 +3,17 @@ from django.db import models
 from members.models import ChoirMembers
 
 
-class SumFinances(models.Model):
-    money = models.FloatField(u'总金额', default=0.00)
+class TotalMoney(models.Model):
+    total_money = models.FloatField(u'总金额', default=0.0)
+    createtime = models.DateTimeField(u'创建时间', auto_now_add=True)
 
     class Meta:
-        db_table = u'choir_sum'
+        db_table = u'choir_finances_total'
+        verbose_name = u'总金额'
+        verbose_name_plural = u'总金额'
 
     def __unicode__(self):
-        return self.money
+        return str(self.total_money)
 
 
 FINANCES_CHOICES = (
@@ -19,20 +22,21 @@ FINANCES_CHOICES = (
 )
 
 DEVOTION_CHOICES = (
-    (1, u'是'),
-    (0, u'否'),
+    (0, u'聚餐'),
+    (1, u'奉献'),
+    (2, u'日常费用'),
+    (3, u'其他'),
 )
 
 
 class ChoirFinances(models.Model):
-    member = models.ForeignKey(ChoirMembers)
+    member = models.ForeignKey(ChoirMembers, verbose_name=u'成员')
     money = models.FloatField(u'金额', default=0.00)
     operation = models.IntegerField(u'操作', choices=FINANCES_CHOICES, default=0)
-    is_devote = models.IntegerField(u'是否为奉献', choices=DEVOTION_CHOICES, default=0)
-    sum = models.OneToOneField(SumFinances)
-    devote_time = models.DateField(u'变更时间')
+    event = models.IntegerField(u'事件', choices=DEVOTION_CHOICES, default=0)
+    devote_time = models.DateField(u'时间')
+    total_money = models.OneToOneField(TotalMoney, blank=True, null=True)
     createtime = models.DateTimeField(u'创建时间', auto_now_add=True)
-    updatetime = models.DateTimeField(u'更新时间', auto_now=True)
     extra = models.TextField(u'备注', blank=True, null=True)
 
     class Meta:
@@ -41,4 +45,4 @@ class ChoirFinances(models.Model):
         verbose_name_plural = u'财务'
 
     def __unicode__(self):
-        return self.operation
+        return self.get_event_display()

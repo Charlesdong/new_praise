@@ -29,10 +29,10 @@ class GlobalSetting(object):
 xadmin.site.register(views.CommAdminView, GlobalSetting)
 
 
-class BaseSetting(object):
-    enable_themes = True
-    use_bootswatch = True
-xadmin.site.register(views.BaseAdminView, BaseSetting)
+# class BaseSetting(object):
+#     enable_themes = True
+#     # use_bootswatch = True
+# xadmin.site.register(views.BaseAdminView, BaseSetting)
 
 
 class PriestAdmin(object):
